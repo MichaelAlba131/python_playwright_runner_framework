@@ -1,0 +1,13 @@
+# Navegação e testes com Playwright (browser automation)
+playwright==1.35.0
+
+# Pytest para execução dos testes e pytest-html para relatórios HTML
+pytest==8.4.0
+pytest-html==4.1.1
+
+# Framework BDD para testes comportamentais (behave)
+behave==1.2.7
+
+# Allure para relatórios avançados (com Behave)
+allure-behave==2.9.43
+allure-python-commons==2.9.43
