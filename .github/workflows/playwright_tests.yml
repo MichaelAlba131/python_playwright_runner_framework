@@ -11,31 +11,56 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: ⬇️ Checkout repository
+      - name: ⬇️ Checkout código
         uses: actions/checkout@v3
 
-      - name: 🐍 Set up Python
+      - name: 🐍 Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
+          python-version: 3.9
 
-      - name: 📦 Install dependencies
+      - name: 📦 Instalar dependências
         run: |
           python -m venv venv
           source venv/bin/activate
-          pip install --upgrade pip
+          python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install pytest-html
-          pip install playwright pytest-playwright
-          python -m playwright install --with-deps
+          pip install playwright pytest pytest-playwright
 
-      - name: 🧪 Run tests with HTML report
+      - name: 🧱 Instalar dependências do sistema para browsers do Playwright
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libnss3 \
+            libatk-bridge2.0-0 \
+            libgtk-3-0 \
+            libxss1 \
+            libasound2 \
+            libgbm1 \
+            libxshmfence1 \
+            libxcomposite1 \
+            libxrandr2 \
+            libxdamage1 \
+            libxtst6 \
+            libglib2.0-0 \
+            libdrm2 \
+            libxfixes3 \
+            libwayland-client0 \
+            libwayland-cursor0 \
+            libwayland-egl1
+
+      - name: 🎭 Instalar browsers do Playwright
+        run: |
+          source venv/bin/activate
+          playwright install --with-deps
+
+      - name: 🚀 Executar testes
         run: |
           source venv/bin/activate
           pytest tests/ --html=report.html --self-contained-html
 
-      - name: 📁 Upload HTML report
-        uses: actions/upload-artifact@v4
+      - name: 📁 Upload do relatório HTML
+        uses: actions/upload-artifact@v3
         with:
-          name: playwright-test-report
+          name: playwright-report
           path: report.html
