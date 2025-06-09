@@ -54,7 +54,15 @@ jobs:
           source venv/bin/activate
           playwright install --with-deps
 
-      - name: 🚀 Executar testes
+      - name: 🐍 Criar ambiente virtual
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install --upgrade pip
+          pip install -r requirements.txt
+          python -m playwright install
+
+      - name: 🚀 Executar testes com Pytest
         run: |
           source venv/bin/activate
           pytest tests/ --html=report.html --self-contained-html
