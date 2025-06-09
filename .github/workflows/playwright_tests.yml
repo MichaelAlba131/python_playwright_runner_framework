@@ -49,12 +49,7 @@ jobs:
             libwayland-cursor0 \
             libwayland-egl1
 
-      - name: 🎭 Instalar browsers do Playwright
-        run: |
-          source venv/bin/activate
-          playwright install --with-deps
-
-      - name: 🐍 Criar ambiente virtual
+      - name: 📦 Instalar dependências Python
         run: |
           python -m venv venv
           source venv/bin/activate
@@ -62,7 +57,7 @@ jobs:
           pip install -r requirements.txt
           python -m playwright install
 
-      - name: 🚀 Executar testes com Pytest
+      - name: 🚀 Rodar testes com Pytest + HTML
         run: |
           source venv/bin/activate
           pytest tests/ --html=report.html --self-contained-html
