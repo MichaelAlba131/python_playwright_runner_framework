@@ -6,7 +6,7 @@ from playwright.sync_api import sync_playwright
 @pytest.fixture(scope="session")
 def browser():
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)  # ou firefox/webkit, se quiser
+        browser = p.chromium.launch(headless=True)  # ou firefox/webkit, se quiser
         yield browser
         browser.close()
 
