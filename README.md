@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <body>
 <section>
-  <h1><span class="emoji">📋</span>Framework de Automação Playwright & Behave (Python)</h1>
+  <h1><span class="emoji">🐍</span>Framework de Automação Playwright & Behave (Python)</h1>
   <p>Framework robusto para automação de testes de interface web utilizando <strong>Playwright</strong> e <strong>Pytest</strong> com geração de relatórios HTML completos.</p>
 </section>
 
