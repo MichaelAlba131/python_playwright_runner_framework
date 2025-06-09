@@ -6,7 +6,7 @@ pytest==8.4.0
 pytest-html==4.1.1
 
 # Framework BDD para testes comportamentais (behave)
-behave==1.2.7
+behave==1.2.6
 
 # Allure para relatórios avançados (com Behave)
 allure-behave==2.9.43
